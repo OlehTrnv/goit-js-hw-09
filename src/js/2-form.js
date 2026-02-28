@@ -3,6 +3,8 @@ const formData = {
     message: ""
 }
 
+const form = document.querySelector(".feedback-form");
+
 const savedData = localStorage.getItem("feedback-form-state");
 
 if (savedData) {
@@ -23,7 +25,6 @@ if (savedData) {
     }
 }
 
-const form = document.querySelector(".feedback-form");
 form.addEventListener("input", handleInput);
 function handleInput(event) {
     const name = event.target.name;
