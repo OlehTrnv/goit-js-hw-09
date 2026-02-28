@@ -3,6 +3,26 @@ const formData = {
     message: ""
 }
 
+const savedData = localStorage.getItem("feedback-form-state");
+
+if (savedData) {
+    const parsed = JSON.parse(savedData);
+
+    formData.email = parsed.email || "";
+    formData.message = parsed.message || "";
+
+    const emailInput = form.querySelector("[name='email']");
+    const messageInput = form.querySelector("[name='message']");
+
+    if (emailInput) {
+        emailInput.value = formData.email;
+    }
+
+    if (messageInput) {
+        messageInput.value = formData.message;
+    }
+}
+
 const form = document.querySelector(".feedback-form");
 form.addEventListener("input", handleInput);
 function handleInput(event) {
@@ -31,22 +51,4 @@ function handleSubmit(event) {
     }
 }
 
-const savedData = localStorage.getItem("feedback-form-state");
 
-if (savedData) {
-    const parsed = JSON.parse(savedData);
-
-    formData.email = parsed.email || "";
-    formData.message = parsed.message || "";
-
-    const emailInput = form.querySelector("[name='email']");
-    const messageInput = form.querySelector("[name='message']");
-
-    if (emailInput) {
-        emailInput.value = formData.email;
-    }
-
-    if (messageInput) {
-        messageInput.value = formData.message;
-    }
-}
